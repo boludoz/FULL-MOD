@@ -245,6 +245,9 @@ Func SaveRegularConfig()
 	; <><><><> Bot / Stats <><><><>
 	; <<< nothing here >>>
 
+;---------------------; Mod------------------------
+	#include "..\..\Mod\Config\saveConfig.au3"
+;---------------------; Mod------------------------
 	;SetDebugLog("saveConfig: Wrote " & $g_iIniLineCount & " ini lines.")
 	_Ini_Save($g_sProfileConfigPath)
 EndFunc   ;==>SaveRegularConfig

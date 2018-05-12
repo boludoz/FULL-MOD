@@ -56,6 +56,10 @@ Func applyConfig($bRedrawAtExit = True, $TypeReadSave = "Read") ;Applies the dat
 	Local $bWasRdraw = SetRedrawBotWindow(False, Default, Default, Default, "applyConfig")
 	; <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
+;---------------------; Mod------------------------
+	#include "..\..\Mod\Config\applyConfig.au3"
+;---------------------; Mod------------------------
+
 	; <><><><> Bot / Profile (global settings) <><><><>
 	ApplyConfig_Profile($TypeReadSave)
 	; <><><><> Bot / Android <><><><>

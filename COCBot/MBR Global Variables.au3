@@ -1535,6 +1535,11 @@ Global Const $g_iMaxCapSpellTH[12] = [0, 0, 0, 0, 0, 2, 4, 6, 7, 9, 11, 11] ; el
 Global $g_oBldgAttackInfo = ObjCreate("Scripting.Dictionary") ; stores building information of base being attacked
 $g_oBldgAttackInfo.CompareMode = 1 ; use case in-sensitve compare for key values
 
+;--------------------------; MOD----------------------------------
+#include "MOD\MOD Global Variables.au3"
+;--------------------------; MOD----------------------------------
+
+
 ; $g_oBldgAttackInfo Dictionay KEY naming reference guide:
 ; 	:Key strings will be building enum value (integer) & "_" & Property name from image detection DLL [Optional: & "K" + key index value]
 ;	:Properties planned to use are:

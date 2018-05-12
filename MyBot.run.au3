@@ -770,6 +770,7 @@ Func runBot() ;Bot that runs everything in order
 				EndIf
 				If CheckAndroidReboot() = True Then ContinueLoop 2 ; must be level 2 due to loop-in-loop
 			WEnd
+			FriendlyChallenge() ; MOD - FriendlyChallenge
 			If $g_bRunState = False Then Return
 			If $g_bRestart = True Then ContinueLoop
 			If IsSearchAttackEnabled() Then ; If attack scheduled has attack disabled now, stop wall upgrades, and attack.
@@ -954,6 +955,8 @@ Func _Idle() ;Sequence that runs until Full Army
 		$TimeIdle += Round(__TimerDiff($hTimer) / 1000, 2) ;In Seconds
 
 		If $g_bCanRequestCC = True Then RequestCC()
+
+		FriendlyChallenge() ; MOD - FriendlyChallenge
 
 		SetLog("Time Idle: " & StringFormat("%02i", Floor(Floor($TimeIdle / 60) / 60)) & ":" & StringFormat("%02i", Floor(Mod(Floor($TimeIdle / 60), 60))) & ":" & StringFormat("%02i", Floor(Mod($TimeIdle, 60))))
 

@@ -12,6 +12,16 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+
+#include "Mod\Functions\_Wait4Pixel.au3"
+#include "Mod\Functions\getMyOcr.au3"
+#include "Mod\Functions\HLFClick.au3"
+#include "Mod\Functions\FriendlyChallenge.au3"
+#include "Mod\Config\applyConfig.au3"
+#include "Mod\Config\readConfig.au3"
+#include "Mod\Config\saveConfig.au3"
+#include "Mod\GUI\MOD GUI Control Child.au3"
+
 ;#include-once
 #include "functions\Other\Base64.au3"
 #include "functions\Other\SetLog.au3"
@@ -297,3 +307,4 @@
 #include "functions\Config\applyConfig.au3"
 #include "functions\Config\readConfig.au3"
 #include "functions\Config\saveConfig.au3"
+

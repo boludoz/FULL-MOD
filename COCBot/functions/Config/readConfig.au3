@@ -30,6 +30,9 @@ Func readConfig($inputfile = $g_sProfileConfigPath) ;Reads config and sets it to
 	If FileExists($g_sProfileBuildingPath) Then ReadBuildingConfig()
 	If FileExists($g_sProfileConfigPath) Then ReadRegularConfig()
 
+;---------------------; Mod------------------------
+	#include "..\..\Mod\Config\readConfig.au3"
+;---------------------; Mod------------------------
 	$g_bReadConfigIsActive = False
 EndFunc   ;==>readConfig
 
