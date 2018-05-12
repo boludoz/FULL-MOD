@@ -17,9 +17,9 @@
 #include "Mod\Functions\getMyOcr.au3"
 #include "Mod\Functions\HLFClick.au3"
 #include "Mod\Functions\FriendlyChallenge.au3"
-#include "Mod\Config\applyConfig.au3"
-#include "Mod\Config\readConfig.au3"
-#include "Mod\Config\saveConfig.au3"
+;#include "Mod\Config\applyConfig.au3"
+;#include "Mod\Config\readConfig.au3"
+;#include "Mod\Config\saveConfig.au3"
 #include "Mod\GUI\MOD GUI Control Child.au3"
 
 ;#include-once
