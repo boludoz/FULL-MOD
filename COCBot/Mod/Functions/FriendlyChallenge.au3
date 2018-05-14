@@ -359,7 +359,7 @@ Func FriendlyChallenge()
 		ForceCaptureRegion()
 		_CaptureRegion2(260,85,272,624)
 		Local $aLastResult[1][2]
-		Local $sDirectory = $g_sSamM0dImageLocation & "\Chat\"
+		Local $sDirectory = $g_sModImageLocation & "\Chat\"
 		Local $returnProps="objectpoints"
 		Local $aCoor
 		Local $aPropsValues

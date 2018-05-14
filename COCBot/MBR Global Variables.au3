@@ -1536,7 +1536,7 @@ Global $g_oBldgAttackInfo = ObjCreate("Scripting.Dictionary") ; stores building 
 $g_oBldgAttackInfo.CompareMode = 1 ; use case in-sensitve compare for key values
 
 ;--------------------------; MOD----------------------------------
-#include "MOD\MOD Global Variables.au3"
+#include "Mod\MOD Global Variables.au3"
 ;--------------------------; MOD----------------------------------
 
 

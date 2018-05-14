@@ -1,1 +1,2 @@
 saveFriendlyChallengeSetting()
+saveDemenWarSetting() ; Mod - War

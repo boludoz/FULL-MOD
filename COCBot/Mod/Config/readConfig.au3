@@ -1,1 +1,2 @@
 readFriendlyChallengeSetting()
+readDemenWarSetting() ; Mod - War
