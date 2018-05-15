@@ -33,3 +33,6 @@ Global $g_hCalTotalWarTroops, $g_hLblTotalWarTroopsProgress, $g_hLblCountWarTroo
 Global $g_hCalTotalWarSpells, $g_hLblTotalWarSpellsProgress, $g_hLblCountWarSpellsTotal
 Global $g_hChkRequestCCForWar = 0, $g_hTxtRequestCCForWar = 0 
 
+; ExtendedAttackBar 
+Global $g_abChkExtendedAttackBar[2] ;, $g_hChkExtendedAttackBarLB, $g_hChkExtendedAttackBarDB
+Global $g_iTotalAttackSlot = 10, $g_bDraggedAttackBar = False ; flag if AttackBar is dragged or not

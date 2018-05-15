@@ -87,9 +87,21 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 		EndIf
 	Next
 
-	Local $usespell = True
-	Switch $iTroopIndex
-		Case $eLSpell
+    ; ExtendedAttackBar                                                                                               ; ExtendedAttackBar
+    debugAttackCSV("Troop position / Total slots: " & $troopPosition & " / " & $g_iTotalAttackSlot)                                   ; ExtendedAttackBar
+    If $troopPosition >= 0 And $troopPosition < $g_iTotalAttackSlot - 10 Then ; can only be selected when in 1st page of troopbar     ; ExtendedAttackBar
+        If $g_bDraggedAttackBar Then DragAttackBar($g_iTotalAttackSlot, True) ; return drag                                           ; ExtendedAttackBar
+    ElseIf $troopPosition > 10 Then ; can only be selected when in 2nd page of troopbar                                               ; ExtendedAttackBar
+        If $g_bDraggedAttackBar = False Then DragAttackBar($g_iTotalAttackSlot, False) ; drag forward                                 ; ExtendedAttackBar
+    EndIf                                                                                                                             ; ExtendedAttackBar
+    If $g_bDraggedAttackBar Then                                                                                                      ; ExtendedAttackBar
+        $troopPosition -= $g_iTotalAttackSlot - 10                                                                                    ; ExtendedAttackBar
+        debugAttackCSV("New troop position: " & $troopPosition)                                                                       ; ExtendedAttackBar
+    EndIf                                                                                                                             ; ExtendedAttackBar
+																																	  ; ExtendedAttackBar
+    Local $usespell = True
+    Switch $iTroopIndex
+        Case $eLSpell
 			If $g_abAttackUseLightSpell[$g_iMatchMode] = False Then $usespell = False
 		Case $eHSpell
 			If $g_abAttackUseHealSpell[$g_iMatchMode] = False Then $usespell = False
@@ -177,25 +189,29 @@ Func DropTroopFromINI($vectors, $indexStart, $indexEnd, $indexArray, $qtaMin, $q
 							If $debug = True Then
 								SetLog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", " & $g_iKingSlot & ", -1, -1) ")
 							Else
-								dropHeroes($pixel[0], $pixel[1], $g_iKingSlot, -1, -1)
-							EndIf
-						Case $eQueen
-							If $debug = True Then
-								SetLog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ",-1," & $g_iQueenSlot & ", -1) ")
-							Else
-								dropHeroes($pixel[0], $pixel[1], -1, $g_iQueenSlot, -1)
-							EndIf
-						Case $eWarden
-							If $debug = True Then
-								SetLog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", -1, -1," & $g_iWardenSlot & ") ")
-							Else
-								dropHeroes($pixel[0], $pixel[1], -1, -1, $g_iWardenSlot)
-							EndIf
-						Case $eCastle
-							If $debug = True Then
-								SetLog("dropCC(" & $pixel[0] & ", " & $pixel[1] & ", " & $g_iClanCastleSlot & ")")
-							Else
-								dropCC($pixel[0], $pixel[1], $g_iClanCastleSlot)
+; -                             dropHeroes($pixel[0], $pixel[1], $g_iKingSlot, -1, -1)
+                                dropHeroes($pixel[0], $pixel[1], $troopPosition, -1, -1) ; was $g_iKingSlot, Demen - ExtendedAttackBar 
+                            EndIf
+                        Case $eQueen
+                            If $debug = True Then
+                                SetLog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ",-1," & $g_iQueenSlot & ", -1) ")
+                            Else
+; -                             dropHeroes($pixel[0], $pixel[1], -1, $g_iQueenSlot, -1)
+                                dropHeroes($pixel[0], $pixel[1], -1, $troopPosition, -1) ; was $g_iQueenSlot, Demen - ExtendedAttackBar 
+                            EndIf
+                        Case $eWarden
+                            If $debug = True Then
+                                SetLog("dropHeroes(" & $pixel[0] & ", " & $pixel[1] & ", -1, -1," & $g_iWardenSlot & ") ")
+                            Else
+; -                             dropHeroes($pixel[0], $pixel[1], -1, -1, $g_iWardenSlot)
+                                dropHeroes($pixel[0], $pixel[1], -1, -1, $troopPosition) ; was $g_iWardenSlot, Demen - ExtendedAttackBar 
+                            EndIf
+                        Case $eCastle
+                            If $debug = True Then
+                                SetLog("dropCC(" & $pixel[0] & ", " & $pixel[1] & ", " & $g_iClanCastleSlot & ")")
+                            Else
+; -                             dropCC($pixel[0], $pixel[1], $g_iClanCastleSlot)
+                                dropCC($pixel[0], $pixel[1], $troopPosition) ; was $g_iClanCastleSlot, Demen - ExtendedAttackBar 
 							EndIf
 						Case $eLSpell To $eSkSpell
 							If $debug = True Then

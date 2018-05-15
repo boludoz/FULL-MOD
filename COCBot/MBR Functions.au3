@@ -18,6 +18,7 @@
 #include "Mod\Functions\HLFClick.au3"
 #include "Mod\Functions\FriendlyChallenge.au3"
 #include "Mod\Functions\CheckStopForWar.au3"
+#include "Mod\Functions\ExtendedAttackBarCheck.au3"
 #include "Mod\GUI\MOD GUI Control Child.au3"
 
 ;#include-once
