@@ -57,7 +57,7 @@ Func SetComboTroopComp()
 	Local $TotalTroopsToTrain = 0
 
 	lblTotalCountTroop1()
-	applyDemenWarSetting("Save"); update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)        ; Mod - War
+	ApplyConfig_600_52_2("Save"); update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)        ; Mod - War
 	lblTotalWarTroopCount()                                                                                                ; Mod - War
 	lblTotalWarSpellCount()                                                                                                ; Mod - War
 	SetRedrawBotWindow($bWasRedraw, Default, Default, Default, "SetComboTroopComp")
@@ -65,7 +65,7 @@ EndFunc   ;==>SetComboTroopComp
 
 Func chkTotalCampForced()
 	GUICtrlSetState($g_hTxtTotalCampForced, GUICtrlRead($g_hChkTotalCampForced) = $GUI_CHECKED ? $GUI_ENABLE : $GUI_DISABLE)
-	applyDemenWarSetting("Save"); update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)       ; Mod - War
+	ApplyConfig_600_52_2("Save"); update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)       ; Mod - War
 	lblTotalWarTroopCount()                                                                                               ; Mod - War
 	lblTotalWarSpellCount()                                                                                               ; Mod - War
 EndFunc   ;==>chkTotalCampForced
@@ -244,7 +244,7 @@ Func TotalSpellCountClick()
 	EndIf
 
 	lblTotalCountSpell2()
-	applyDemenWarSetting("Save") ; update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)     ; Mod - War
+	ApplyConfig_600_52_2("Save") ; update total spell value in Village/Misc/War preparation Tab - StopForWar (Demen)     ; Mod - War
 	lblTotalWarTroopCount()                                                                                              ; Mod - War
 	lblTotalWarSpellCount()                                                                                              ; Mod - War
 	SetRedrawBotWindow($bWasRedraw, Default, Default, Default, "TotalSpellCountClick")

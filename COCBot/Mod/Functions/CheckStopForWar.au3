@@ -161,7 +161,6 @@ Func CheckWarTime(ByRef $aResult) ; return Success + $aResult[3] = [ $iBattleSta
 EndFunc   ;==>CheckWarTime
 
 Func StopAndPrepareForWar($iSleepTime)
-
 	If $g_bTrainWarTroop Then
 		SetLog("Let's remove all farming troops and train war troop", $COLOR_ACTION)
 		If $g_bUseQuickTrainWar Then
@@ -178,8 +177,6 @@ Func StopAndPrepareForWar($iSleepTime)
 		EndIf
 
 		; Train
-				If $g_hChkX2ForWar Then	SetLog("logos IF")
-				If not $g_hChkX2ForWar Then	SetLog("logos IF NOT")
 		StartGainCost()
 		OpenArmyOverview(False, "StopAndPrepareForWar()")
 
@@ -197,15 +194,25 @@ Func StopAndPrepareForWar($iSleepTime)
 			Local $rWhatToTrain = WhatToTrain(False, False)
 			TrainUsingWhatToTrain($rWhatToTrain) ; troop
 			If _Sleep(500) Then Return
+		If $g_bChkX2ForWar Then
+						 
+	
 			Local $TroopCamp = GetOCRCurrent(43, 160)
 			SetLog("Checking troop tab: " & $TroopCamp[0] & "/" & $TroopCamp[1] * 2)
+		EndIf
 
 			$rWhatToTrain = WhatToTrain(False, True)
 			TrainUsingWhatToTrain($rWhatToTrain, True) ; spell
 			If _Sleep(500) Then Return
+		If $g_bChkX2ForWar Then
+						 
+	
 			Local $SpellCamp = GetOCRCurrent(43, 160)
 			SetLog("Checking spell tab: " & $SpellCamp[0] & "/" & $SpellCamp[1] * 2)
+		EndIf
 
+							  
+		If not $g_bChkX2ForWar Then		
 			; Train 2nd set
 			SetLog("Let's train 2nd set of troops & spells")
 			$g_bIsFullArmywithHeroesAndSpells = True
@@ -221,6 +228,7 @@ Func StopAndPrepareForWar($iSleepTime)
 			If _Sleep(750) Then Return
 			Local $SpellCamp = GetOCRCurrent(43, 160)
 			SetLog("Checking spell tab: " & $SpellCamp[0] & "/" & $SpellCamp[1] * 2)
+		EndIf
 
 		Else
 			OpenArmyTab(False, "StopAndPrepareForWar()")
@@ -239,8 +247,12 @@ Func StopAndPrepareForWar($iSleepTime)
 			OpenQuickTrainTab(False, "StopAndPrepareForWar()")
 			If _Sleep(750) Then Return
 			TrainArmyNumber($g_bQuickTrainArmy)
+		If not $g_bChkX2ForWar Then		
 			If _Sleep(250) Then Return
 			TrainArmyNumber($g_bQuickTrainArmy)
+		EndIf
+
+	   
 
 			EndIf
 
@@ -277,8 +289,8 @@ Func StopAndPrepareForWar($iSleepTime)
 			If UBound($aActiveAccount) > 1 Then
 				GUICtrlSetState($g_ahChkAccount[$g_iCurAccount], $GUI_UNCHECKED)
 				chkAccount($g_iCurAccount)
-				SaveDemenWarSetting() ; Save config profile after changing botting type
-				ReadDemenWarSetting() ; Update variables
+				SaveConfig_600_35_2() ; Save config profile after changing botting type
+				ReadConfig_600_35_2() ; Update variables
 				UpdateMultiStats(False)
 				SetLog("Acc [" & $g_iCurAccount + 1 & "] turned OFF and start over with another account")
 				SetSwitchAccLog("   Acc. " & $g_iCurAccount + 1 & " now Idle for war", $COLOR_ACTION)
@@ -403,8 +415,8 @@ Func CheckStopForWarAllAccounts()
 				If GUICtrlRead($g_ahChkAccount[$i]) = $GUI_CHECKED Then
 					GUICtrlSetState($g_ahChkAccount[$i], $GUI_UNCHECKED)
 					chkAccount($i)
-					SaveDemenWarSetting() ; Save config profile after changing botting type
-					ReadDemenWarSetting() ; Update variables
+					SaveConfig_600_35_2() ; Save config profile after changing botting type
+					ReadConfig_600_35_2() ; Update variables
 					UpdateMultiStats()
 					SetLog("Acc [" & $i + 1 & "] turned OFF")
 					SetSwitchAccLog("   Acc. " & $i + 1 & " now Idle for war", $COLOR_ACTION)
@@ -488,7 +500,7 @@ Func applyDemenWarSetting($TypeReadSave)
 			Next
 			GUICtrlSetState($g_hChkRequestCCForWar, $g_bRequestCCForWar ? $GUI_CHECKED : $GUI_UNCHECKED)
 			GUICtrlSetData($g_hTxtRequestCCForWar, $g_sTxtRequestCCForWar)
-			readDemenWarSetting()
+			ReadConfig_600_52_2()
 			ChkStopForWar()
 
 		Case "Save"
